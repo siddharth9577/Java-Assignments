@@ -1,0 +1,94 @@
+PART A – THEORY QUESTIONS
+1) Difference between while and do-while loop
+The while loop is an entry-controlled loop, which means the condition is checked before executing the loop body. If the condition is false initially, the loop body will not execute even once. It is generally used when the number of iterations is not known beforehand and execution depends completely on the condition.
+The do-while loop is an exit-controlled loop, meaning the loop body executes first and then the condition is checked. So even if the condition is false, the loop will run at least one time. It is useful when the loop must execute at least once, such as in menu-driven programs.
+2) Difference between return and System.exit()
+The return statement is used to exit from a method and optionally send a value back to the calling method. It only terminates the current method execution, not the entire program. After returning, the remaining part of the program continues executing.
+System.exit() is a method of the System class that terminates the entire JVM (Java Virtual Machine). Once it is executed, the whole program stops immediately. It is generally used when we want to stop the program completely due to some condition.
+3) Checked and Unchecked Exceptions
+Checked exceptions are the exceptions that are checked at compile time. The programmer must handle these exceptions using try-catch or declare them using throws keyword. Examples include IOException and SQLException. If not handled, the program will not compile.
+Unchecked exceptions are checked at runtime. They occur due to programming mistakes such as dividing by zero or accessing invalid array index. These are subclasses of RuntimeException. The compiler does not force the programmer to handle them.
+4) Difference between throw and throws
+The throw keyword is used to explicitly throw an exception inside a method. It is followed by an object of Exception class and used within the method body. Only one exception can be thrown at a time using throw.
+The throws keyword is used in method declaration to declare exceptions that may occur during execution. It informs the caller of the method that it must handle the exception. Multiple exceptions can be declared using throws separated by commas.
+5) What is a custom exception?
+A custom exception is a user-defined exception created by extending the Exception class or RuntimeException class. It is used when built-in exceptions are not sufficient to describe application-specific errors. It improves readability and clarity of error handling.
+Custom exceptions are generally created to handle business logic errors such as InvalidAgeException or InsufficientBalanceException. By defining our own exception, we can provide meaningful messages and better control over program behavior.
+PART B – PROGRAMMING QUESTIONS
+1) Constructor Chaining
+class Demo {
+    Demo() {
+        this(10);
+        System.out.println("Default Constructor");
+    }
+
+    Demo(int x) {
+        System.out.println("Parameterized Constructor: " + x);
+    }
+
+    public static void main(String[] args) {
+        Demo d = new Demo();
+    }
+}
+2) Use of this and super
+class Parent {
+    int x = 100;
+}
+
+class Child extends Parent {
+    int x = 200;
+
+    void display() {
+        System.out.println("Child x: " + this.x);
+        System.out.println("Parent x: " + super.x);
+    }
+
+    public static void main(String[] args) {
+        Child c = new Child();
+        c.display();
+    }
+}
+3) Count number of objects using static variable
+class Counter {
+    static int count = 0;
+
+    Counter() {
+        count++;
+    }
+
+    public static void main(String[] args) {
+        Counter c1 = new Counter();
+        Counter c2 = new Counter();
+        Counter c3 = new Counter();
+
+        System.out.println("Total Objects Created: " + Counter.count);
+    }
+}
+4) Static Block Execution Order
+class StaticDemo {
+    static {
+        System.out.println("Static Block 1");
+    }
+
+    static {
+        System.out.println("Static Block 2");
+    }
+
+    public static void main(String[] args) {
+        System.out.println("Main Method");
+    }
+}
+5) Use of final variable
+class FinalDemo {
+    final int number = 50;
+
+    void display() {
+        System.out.println("Final Variable: " + number);
+    }
+
+    public static void main(String[] args) {
+        FinalDemo obj = new FinalDemo();
+        obj.display();
+    }
+}
+
